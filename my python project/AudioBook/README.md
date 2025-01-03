@@ -37,14 +37,14 @@ This project converts text from a PDF file into speech and saves the result as a
    - Ensure the PDF file is in the same directory as your script. You can use any PDF with text (or an image-based PDF if you're using OCR).
 
 2. **Save the Script**
-   - Save the Python script provided in a file (e.g., `text_to_speech.py`).
+   - Save the Python script provided in a file (e.g., `Audiobook.py`).
 
 3. **Run the Script**
    - Open the terminal in the directory where your script is saved.
    - Run the script using Python:
 
    ```bash
-   python text_to_speech.py
+   python Audiobook.py
    ```
 
    The script will extract text from the PDF and convert it into speech. The resulting speech will be saved as `Audio.mp3` in the same directory.
