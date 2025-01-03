@@ -1,13 +1,11 @@
-# import Required Library
-
+# import Required Libraries
 from tkinter import *
 import datetime
 import time
 import winsound
 from threading import *
 
-#create Object
- 
+# create Object
 root = Tk()
 root.geometry("400x400")
 
@@ -16,36 +14,39 @@ root.config(bg="black")
 
 
 # USE Threading
-
 def Threading():
     t1 = Thread(target=alarm)
+    t1.daemon = True  # Ensures the thread stops when the main program exits
     t1.start()
+
 
 def alarm():
     while True:
-        # to set a alarm
+        # set an alarm
         set_alarm_time = f"{hour.get()}:{minute.get()}:{second.get()}"
-       
-       # wait for a sec which makes reduce of enegy in CPU
+
+        # wait for a sec to reduce CPU usage
         time.sleep(1)
 
-        #GET CURRENT TIME
+        # GET CURRENT TIME
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
         print(current_time, set_alarm_time)
 
-
-        # Check whether set alarm is equal to current time or not
+        # Check whether set alarm is equal to current time
         if current_time == set_alarm_time:
-            print("Time to wake up")
-         # Playing sound
+            print("Time to wake up!")
+            # Playing sound
             winsound.PlaySound("sound.wav", winsound.SND_ASYNC)
+
+
 # Add Labels, Frame, Button, Optionmenus
-Label(root, text="Alarm Clock", font=("poppins 30 bold"), fg="red" , bg="black").pack(pady=15)
-Label(root, text="Set Time", font=("sans-sherif 20 bold"),fg="white" , bg="black").pack(padx=10,pady=5)
+Label(root, text="Alarm Clock", font=("poppins 30 bold"), fg="red", bg="black").pack(pady=15)
+Label(root, text="Set Time", font=("sans-serif 20 bold"), fg="white", bg="black").pack(padx=10, pady=5)
 
 frame = Frame(root, bg="black")
 frame.pack(pady=5)
 
+# Hour Options
 hour = StringVar(root)
 hours = ('00', '01', '02', '03', '04', '05', '06', '07',
          '08', '09', '10', '11', '12', '13', '14', '15',
@@ -57,6 +58,7 @@ hrs = OptionMenu(frame, hour, *hours)
 hrs.config(bg="black", fg="white")
 hrs.pack(side=LEFT)
 
+# Minute Options
 minute = StringVar(root)
 minutes = ('00', '01', '02', '03', '04', '05', '06', '07',
            '08', '09', '10', '11', '12', '13', '14', '15',
@@ -72,6 +74,7 @@ mins = OptionMenu(frame, minute, *minutes)
 mins.config(bg="black", fg="white")
 mins.pack(side=LEFT)
 
+# Second Options
 second = StringVar(root)
 seconds = ('00', '01', '02', '03', '04', '05', '06', '07',
            '08', '09', '10', '11', '12', '13', '14', '15',
@@ -87,7 +90,8 @@ secs = OptionMenu(frame, second, *seconds)
 secs.config(bg="black", fg="white")
 secs.pack(side=LEFT)
 
-Button(root, text="Set Alarm", font=("Helvetica 15"),bg="black", fg="red", command=Threading).pack(pady=20)
+# Set Alarm Button
+Button(root, text="Set Alarm", font=("Helvetica 15"), bg="black", fg="red", command=Threading).pack(pady=20)
 
 # Execute Tkinter
 root.mainloop()
