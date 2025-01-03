@@ -2,7 +2,7 @@ Here's a `README.md` file that you can use to explain how to set up and run the 
 
 ---
 
-# Text-to-Speech from PDF
+# AudioBook ( Text to Speech from PDF)
 
 This project converts text from a PDF file into speech and saves the result as an MP3 file using Python. It utilizes the `gTTS` library for text-to-speech conversion and `PyPDF2` (or `pypdf`) for extracting text from PDF files.
 
